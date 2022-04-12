@@ -164,6 +164,12 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    // add the strings together using the + operator set it to a variable called newStr
+    var newStr = stringOne + stringTwo;
+
+    //return newStr
+    return newStr;
+
 
 
 
@@ -183,7 +189,16 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
+    // initiate a variable called joinedStr and set it equal to an empty string
+    var joinedStr = '';
 
+    // iterate through args
+    for (var i = 0; i < args.length; i++) {
+    // add each item from args to joinedStr
+    joinedStr += args[i];
+    }
+    //return joinedStr
+    return joinedStr;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -199,7 +214,15 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    // write an if statement for if stringOne is longer than stringTwo
+    if (stringOne.length > stringTwo.length) {
+    // if so, return stringOne
+        return stringOne;
+  
+    // if stringTwo is longer, return stringTwo
+     } else if (stringTwo.length > stringOne.length) {  
+         return stringTwo;
+     }
 
 
     // YOUR CODE ABOVE HERE //
@@ -214,7 +237,19 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    // write an if statement checking if stringOne comes before stringTwo alphabetically. if so, return 1
+    if (stringOne < stringTwo) {
+        return 1;
+    // if stringTwo comes before stringOne alphabetically, return -1
+    } else if (stringTwo < stringOne) {
+        return -1;
+    
+    // otherwise return 0
+    } else {
+        return 0
+    }
+    
+    
 
 
     // YOUR CODE ABOVE HERE //
@@ -230,7 +265,19 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    // write an if statement checking if stringOne comes after stringTwo alphabetically. if so, return 1
+    if (stringOne > stringTwo) {
+        return 1;
+    // if stringTwo comes after stringOne alphabetically, return -1
+    } else if (stringTwo > stringOne) {
+        return -1;
+    
+    // otherwise return 0
+    } else {
+        return 0
+    }
+    
+    
 
 
 
