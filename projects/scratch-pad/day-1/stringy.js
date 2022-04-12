@@ -98,9 +98,23 @@ function toDashCase(string) {
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
     // initialize a variable called lowerCaseStr and set it equal to the string forced to lowercase
+    var lowerCaseStr = string.toLowerCase();
     // initialize a variable called lowerCaseChar and set it equal to the char forced to lowercase
-    // initialize a variable called firstChar and set it equal to the character in the string
+    var lowerCaseChar = char.toLowerCase();
+    // initialize a variable called firstChar and set it equal to the first character in lowerCaseStr
+    var firstChar = lowerCaseStr.charAt(0);
+    // write an if else statement that compares firstChar and lowerCaseChar
+    if (firstChar === lowerCaseChar) {
+        // if they are exactly equal return true
+        return true;
+
+          // otherwise return false
     
+    } else {
+        return false;
+    }
+    
+  
 
     // YOUR CODE ABOVE HERE //
 }
@@ -119,6 +133,24 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
+ // initialize a variable called lowerCaseStr and set it equal to the string forced to lowercase
+    var lowerCaseStr = string.toLowerCase();
+    // initialize a variable called lowerCaseChar and set it equal to the char forced to lowercase
+    var lowerCaseChar = char.toLowerCase();
+    // initialize a variable called lastChar and set it equal to the last character in lowerCaseStr
+    var lastChar = lowerCaseStr.charAt(lowerCaseStr.length - 1);
+    // write an if else statement that compares firstChar and lowerCaseChar
+    if (lastChar === lowerCaseChar) {
+        // if they are exactly equal return true
+        return true;
+
+          // otherwise return false
+    
+    } else {
+        return false;
+    }
+    
+  
 
 
 
