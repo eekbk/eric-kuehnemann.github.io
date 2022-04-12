@@ -14,7 +14,8 @@
  */
 function length(string) {
     // YOUR CODE BELOW HERE //
-    //return the length 
+    //return the length of the string
+    return string.length;
 
 
     // YOUR CODE ABOVE HERE //
@@ -25,7 +26,14 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
+//initialize a variable named lowerCase
+var lowerCase;
 
+//reassign lowercase to value of string.toLowerCase()
+lowerCase = string.toLowerCase();
+
+//return lowerCase;
+return lowerCase;
 
 
     // YOUR CODE ABOVE HERE //
@@ -36,7 +44,11 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
+    //declare a variable called upperCase and set it to the string forced to Uppercase
+    var upperCase = string.toUpperCase();
 
+    //return upperCase;
+    return upperCase;
 
 
     // YOUR CODE ABOVE HERE //
@@ -57,7 +69,15 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
+    // initialize a function named newStr, set to the value of string forced to lowercase
+    var newStr;
+    newStr = string.toLowerCase();
+    // split the string into an array and reassign to newStr
+    newStr = newStr.split(' ');
+    // join the array back into a string with the items separated by dashes, reassign to newStr
+    newStr = newStr.join('-');
+    // return newStr
+    return newStr
 
 
     // YOUR CODE ABOVE HERE //
@@ -77,7 +97,9 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+    // initialize a variable called lowerCaseStr and set it equal to the string forced to lowercase
+    // initialize a variable called lowerCaseChar and set it equal to the char forced to lowercase
+    // initialize a variable called firstChar and set it equal to the character in the string
     
 
     // YOUR CODE ABOVE HERE //
