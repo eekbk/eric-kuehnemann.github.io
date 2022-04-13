@@ -135,8 +135,23 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
+    // create a variable of number of passing tests set to 0
+    var numOfPasses = 0;
+
+    // iterate through the strings
+    for (var i = 0; i < strings.length; i++){
+        // if iteration passes test, add 1 to numOfPasses
+        if(test(strings[i])){
+            numOfPasses += 1;
+        }
+    }
+    // return true if numOfPasses is equal to number of strings
+    if(numOfPasses === strings.length) {
+        return true;
+    // false otherwise
+    } else {
+        return false;
+    }
     
     
     // YOUR CODE ABOVE HERE //
