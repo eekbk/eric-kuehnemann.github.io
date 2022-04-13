@@ -13,7 +13,11 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    // return a function that takes a value as an input 
+    return function(val) {
+        // tests whether a given value is greater than the base
+        return val > base;
+    }
     
     
     
@@ -27,6 +31,12 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
+    // return a function that takes a value as an input
+    return function(val) {
+        // test whether the value is less than the base
+        return val < base;
+    }
+    
     
     
     
@@ -41,6 +51,17 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
+    // make startsWith lowercase
+    var startsWithLowerCase = startsWith.toLowerCase();
+    // return a function that takes a string as a parameter
+    return function(str) {
+        // make str lowerCase
+        var strLowerCase = str.toLowerCase();
+        // test whether the string starts with the startsWith character
+        return strLowerCase[0] === startsWithLowerCase;
+
+    }
+    
     
     
     
@@ -55,6 +76,19 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
+     // make endsWith lowercase
+    var endsWithLowerCase = endsWith.toLowerCase();
+    // return a function that takes a string as a parameter
+    return function(str) {
+        // make str lowerCase
+        var strLowerCase = str.toLowerCase();
+        // test whether the string ends with the startsWith character
+        return strLowerCase[strLowerCase.length - 1] === endsWithLowerCase;
+
+    }
+    
+    
+    
     
     
     
@@ -71,7 +105,19 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
+    // create an output variable that is an empty array
+    var newArray = [];
+    // loop over the input array
+    for (var i = 0; i < strings.length; i++) {
+        // modify each string in the array with the function
+        // push the modified string into the new array
+        newArray.push(modify(strings[i]));
+    }
+    // return the new array
+    return newArray;
     
+    
+
     
     
     
