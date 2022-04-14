@@ -23,6 +23,28 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
+    // create an empty output array
+    var output = [];
+    // if start is smaller than end
+    if(start < end) {
+        // create a loop that starts at start and ends at end, increasing by 1 each iteration
+        for (var i = start; i <= end; i++) {
+        // push the current integer to the array
+         output.push(i);
+
+         }
+    // if the start is larger than the end
+    } else if(start > end) {
+        // create a loop that begins at end and stops at star, decreasing by 1 each iteration
+        for (var i = start; i >= end; i--) {
+            //push the current integer to the array
+            output.push(i);
+        }
+    }
+    // return the output array
+    return output;
+    
+
     
     
     
