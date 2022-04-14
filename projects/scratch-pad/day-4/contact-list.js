@@ -62,10 +62,49 @@ function makeContactList() {
         },
         addContact: function(contact) {
             contacts.push(contact);
-        }
-    }
-}
+        },
+        findContact: function(fullName) {
+            // push fullname to lowercase and save to lowerCaseName
+            var lowerCaseName = fullName.toLowerCase();
+            // separate full name at spaces and add to nameArray variable
+            var nameArray = lowerCaseName.split(' ');
+                // iterate through contacts list
+                for (var i = 0; i < contacts.length; i++) {
+                    // iterate through values in current object
+                    for (var key in contacts[i]) {
+                        // push current value to lowercase and save as a variable
+                        var valLowerCase = contacts[i][key].toLowerCase();
+                        // check if the current value is equal to the first name
+                        if(nameArray[0] === valLowerCase) {
+                            // if so, let's do another loop iterating through contacts
+                            for (var j = 0; j < contacts.length; j++) {
+                                // iterate through values in the current object
+                                for (var key in contacts[j]) {
+                                    // push current value to lowercase and save as a new variable
+                                    var val2LowerCase = contacts[j][key].toLowerCase();
+                                    //check if the current value is equal to the last name
+                                    if(nameArray[1] === val2LowerCase) {
+                                        // if so return current object
+                                        return contacts[j];
+                                    }
+                                }
+                            }
 
+                        }
+
+
+                        }
+                    } return undefined;
+                    
+
+                },
+            
+            }
+            
+
+        
+    
+}
 
 
 
