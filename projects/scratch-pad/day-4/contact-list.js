@@ -98,6 +98,41 @@ function makeContactList() {
                     
 
                 },
+                removeContact: function(contact) {
+                    // iterate through contacts array
+                    for (var i = 0; i < contacts.length; i++) {
+                        // check if current element is equal to input
+                        if(contacts[i] === contact) {
+                            // if so, remove current element
+                            contacts.splice(i, 1);
+                        }
+                    
+                    }
+                    // return new contacts
+                    return contacts;
+                },
+                printAllContactNames: function() {
+                     // create a variable of a string to print, set to empty
+                    var strPrint = '';
+                    // iterate through contacts array
+                    for (var i = 0; i < contacts.length; i++){
+                        // make sure current element is not the final element
+                        // if so 
+                        if(contacts[i] !== contacts[contacts.length - 1]) {
+                             //add nameFirst and a space and nameLast and a return
+                             strPrint += contacts[i].nameFirst + ' ' + contacts[i].nameLast + '\n';
+                        // if final element do not add line break
+                        } else {
+                            strPrint += contacts[i].nameFirst + ' ' + contacts[i].nameLast;
+                        }   
+                    }
+                    // return strPrint
+                    return strPrint;
+                    
+                   
+                 
+                  
+                },
             
             }
             
