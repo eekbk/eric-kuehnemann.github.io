@@ -65,6 +65,35 @@ console.log(animal)
 //////////////////////////////////////////////////////////////////////
 // Step 6 - A Collection of Animals //////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+var animals = [];
+animals.push(animal);
+
+console.log(animals);
+
+var duck = {
+   species: 'duck', 
+   name: 'Jerome', 
+   noises: ['quack', 'honk', 'sneeze', 'woosh'] 
+   }
+
+animals.push(duck);
+
+var cow = {
+  species: 'cow',
+  name: 'Matchy',
+  noises: ['moo1', 'moo2', 'moo3']
+};
+
+var bear = {
+  species: 'bear',
+  name: 'Oso',
+  noises: ['roar', 'roar2', 'roar3']
+};
+
+animals.push(cow, bear);
+
+
+console.log(animals);
 
 
 
@@ -72,7 +101,36 @@ console.log(animal)
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// I think array is the best choice for a list of friends bc array is a list
+var friends = [];
 
+function getRandom(arr){
+//  use Math.random to get a random index in the array (which will be a random animal object)
+ 
+  return arr[Math.floor(Math.random() * arr.length)];
+  
+}
+
+// get a random animal and store it as a variable
+var randomAnimal = getRandom(animals);
+
+// add the random animal's name to friends array
+friends.push(randomAnimal.name);
+
+// console.log(friends)
+console.log(friends);
+/*
+use bracket notation to add the friends array as a property to a 
+friends key on one of the animals in the animals array
+*/
+
+animals[1]['friends'] = friends;
+
+
+// console.log(animals)
+
+
+console.log(randomAnimal); 
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
