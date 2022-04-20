@@ -63,7 +63,11 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    if (Array.isArray(collection)) {
+        return 'array';
+    } else if (typeof collection === 'object') {
+        return 'object';
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -71,7 +75,17 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
+    // create a newStr variable of an empty string
+    let newStr = '';
+    // add the first letter of the string, capitalized, to the output string
+    newStr += string[0].toUpperCase();
+    //make a for loop for the rest of the letters, adding each to the output string
+    for (let i = 1; i < string.length; i++) {
+        newStr += string[i];
+    }
+    // return the output string
+    return newStr;
+    // 
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -79,7 +93,41 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    
+    // create a new empty output string
+    let newStr = '';
+    // split the input string into an array
+    newArr = string.split('');
+    // capitalize the first letter and add it to newStr
+    newStr += string[0].toUpperCase();
+    // iterate thru array
+    for (let i = 1; i < newArr.length; i++) {
+        // if index before current is a space, capitalize current index and add it to new string
+        if (newArr[i - 1] === ' ') {
+            newStr += newArr[i].toUpperCase();
+        // otherwise add current index to new string
+        } else {
+            newStr += newArr[i];
+        }
+    }
+    // return newStr 
+    return newStr
+    /*
+    // capitalize the first letter and add it to the newStr
+    newStr += string[0].toUpperCase();
+    // iterate though each of the characters in the string
+    for (let i = 1; i < string.length; i++) {
+        // if the character before the current is an empty space, capitalize it and add it to the new string
+        if (string[i - 1] === ' ') {
+            newStr += string[i].toUpperCase();
+        // otherwise, add it to the new string
+        } else {
+            newStr += string[i];
+        }
+      // return the new string
+    return newStr;
+
+    }
+*/
 }
 
 //////////////////////////////////////////////////////////////////////
