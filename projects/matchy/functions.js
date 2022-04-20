@@ -74,7 +74,9 @@ function remove(animals, name) {
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 fuction add(animals, animal) {
-    
+    // check if animal object has a name property with a length > 0
+    // 
+
 }
 
 

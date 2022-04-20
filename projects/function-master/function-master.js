@@ -3,7 +3,16 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
+    // create output array
+    let newArr = [];
+    // loop through the keys in the object
+    for (let key in object) {
+        // for every key push the value to the output array
+        newArr.push(object[key]);
 
+    } 
+      // return output array
+      return newArr;
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +20,20 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
+    // create output string
+    let newStr = '';
+    // loop thru keys in the object
+    for (let key in object) {
+        // check if current key is a string
+        if (typeof key === 'string') {
 
+        // if so add the key to the output string, separated by a space
+        newStr += key + ' ';
+        }
+    }
+    // return the string without the final space
+    return newStr.slice(0, -1);
+   
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +41,21 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
+    // create output string
+    let newStr = '';
+    // loop thru the keys in object
+    for (let key in object) {
+        // check if current value is a string
+        if ( typeof object[key] === 'string') {
+            // if so, add value to output string, separated by a space
+            newStr += object[key] + ' ';
+        }
+        // return output string without final space
+        
+    }
     
+    return newStr.slice(0, -1);
+
 }
 
 //////////////////////////////////////////////////////////////////////
