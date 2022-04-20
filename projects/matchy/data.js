@@ -107,12 +107,12 @@ var friends = [];
 function getRandom(arr){
 //  use Math.random to get a random index in the array (which will be a random animal object)
  
-  return arr[Math.floor(Math.random() * arr.length)];
+  return Math.floor(Math.random() * arr.length);
   
 }
 
 // get a random animal and store it as a variable
-var randomAnimal = getRandom(animals);
+var randomAnimal = animals[getRandom(animals)];
 
 // add the random animal's name to friends array
 friends.push(randomAnimal.name);
