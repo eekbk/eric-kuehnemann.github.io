@@ -9,7 +9,7 @@
  * and read every instruction carefully.
  */
 
-const { animal } = require("./data");
+//const { animal } = require("./data");
 
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
@@ -47,7 +47,7 @@ function replace(animals, name, replacement) {
         // if so, replace its entire object with the replacement object
         animals[i] = replacement;
         }
-        return animals
+        return animals;
     }
 
     
@@ -63,20 +63,36 @@ function remove(animals, name) {
     // check if animal with that name exists in the animals array
     for (var i = 0; i < animals.length; i++) {
         if (animals[i].name === name) {
-            animals.splice(animals[i], 1);
+            // if so, remove it
+            animals.splice(i, 1);
         }
     }
-    // if so, remove it
+
 }
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-fuction add(animals, animal) {
-    // check if animal object has a name property with a length > 0
-    // 
-
+function add(animalArr, animalObj) {
+    // create a variable called isUnique
+    var isUnique;
+    // check if animalObj it has a unique name by looping through animal array
+    for (var i = 0; i < animalArr.length; i++){
+        if (animalArr[i].name === animalObj.name){
+            // if name is found, change isUnique to 'false'
+            isUnique = false;
+            }
+        }
+    // check if animal object has a name property with a length > 0 AND  has a species property woth length > 0
+    if (animalObj.name.length > 0 && animalObj.species.length > 0 && isUnique !== false) {
+        // if all conditions pass, add this animal to the array
+       animalArr.push(animalObj);
+       return animalArr;
+        
+    }
+    
+   
 }
 
 
