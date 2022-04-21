@@ -259,7 +259,7 @@ function nonFriends(name, array) {
                     for (let j = 0; j < newArr.length; j++) {
                         if (array[k].friends[i] === newArr[j]) {        
                             // if so, remove that value from newArr
-                            newArr.splice(newArr[j], 1);
+                            newArr.splice(j, 1);
                         }
                     }
                 }
