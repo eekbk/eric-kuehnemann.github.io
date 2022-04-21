@@ -135,7 +135,11 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-
+    // create an empty string 
+    let newStr = '';    
+    // add welcome and a space and the name property, capitalized and exclamation point to strin
+    newStr = 'Welcome ' + capitalizeWord(object.name) + '!';
+    return newStr;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -143,7 +147,12 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+    // create an empty string to return
+    let newStr = '';
+    // add capitalized name plus " is a " plus capitalized species to string
+    newStr = capitalizeWord(object.name) + ' is a ' + capitalizeWord(object.species);
+    // return string
+    return newStr;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -151,6 +160,20 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
+    // create output string
+    let newStr = '';
+    // check if noises property doesn't have a length or if it is undefined
+    if (object.noises === undefined || object.noises.length === 0) {
+        // if true, make output string 'there are no noises'
+        newStr = 'there are no noises';
+    // otherwise join array into a string and put in output string
+    } else {
+        newStr =  object.noises.join(' ');
+    }
+    // return string
+    return newStr;
+
+
 
 }
 
@@ -159,7 +182,21 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    // make string a new lowercase string
+    let newStr = string.toLowerCase();
+    // make word a new lowercase string
+    let newWord = word.toLowerCase();
+    // create an array equal to the new string, split at the spaces
+    let newArr = newStr.split(' ');
+    // iterate thru array
+    for (let i = 0; i < newArr.length; i++) {
+        if (newWord === newArr[i]) {
+            // if word matches a word in the array, return true
+            return true;
+        }
+    } 
+    // if iteration is done without a match, return false
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -167,7 +204,11 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+    // create a new array equal to the friends array
+    object.friends.push(name);
+    // push name into object friend property array
+    // return object
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -175,7 +216,19 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+    // iterate thru object friends array
+    // if friends is undefined return false
+    if (object.friends === undefined) {
+        return false;
+    }
+    for (i = 0; i < object.friends.length; i++) {
+        // if name matches a friend return true
+        if (name === object.friends[i]) {
+            return true;
+        }
+    }
+    // return false if no match found after iteration
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -183,7 +236,40 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
+    // create an output array of name values
+    let newArr = [];
+    // loop through array objects, adding any name value that is not input name to newArr
+    for (let i = 0; i < array.length; i++){
+        if (array[i].name !== name) {
+            newArr.push(array[i].name);
+        }
+    }
+    
+   //locate the input name object 
+    for (let k = 0; k < array.length; k++) {
+        if (array[k].name === name) {
+            // if current name has no friends, return newArr as is
+            if (array[k].friends === undefined) {
+                return newArr;
+            // otherwise
+            } else {
+                // loop thru input name's friends
+                for (let i = 0; i < array[k].friends.length; i++) {
+                    // at each iteration, loop through newArr, checking if anyvalues match
+                    for (let j = 0; j < newArr.length; j++) {
+                        if (array[k].friends[i] === newArr[j]) {        
+                            // if so, remove that value from newArr
+                            newArr.splice(newArr[j], 1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 
+    // return newArr
+    return newArr;
 }
 
 //////////////////////////////////////////////////////////////////////
