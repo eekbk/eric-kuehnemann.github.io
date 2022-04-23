@@ -277,7 +277,10 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+    // add key and value to object
+    object[key] = value;
+    // return object
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -285,7 +288,19 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
+    // iterate thru each key in the object
+    for (let key in object) {
+        // at each key check if the value or property are in the array
+        for (let i = 0; i < array.length; i++){
+            if (array[i] === object[key] || array[i] === key) {
+                // if so, remove the property   
+                delete object[key];
+            }
+        }
 
+    }
+    // return the object
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -293,7 +308,24 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    // initialize an empty output array
+    let newArr = [];
+    // loop thru input array
+    for (let i = 0; i < array.length; i++){
+        // loop through the output array
+        for (let j = 0; j < newArr.length; j++){
+            //check if the indices match
+            if (array[i] === newArr[j]) {
+                // if so, delete from newArray
+                newArr.splice(j, 1);
+            }
+        }
+        // add current index to newArr
+        newArr.push(array[i]);
+        console.log('++++' + newArr + 'loop' + i + '++++++')
+    }
+    // return output array
+    return newArr;
 }
 
 //////////////////////////////////////////////////////////////////////
