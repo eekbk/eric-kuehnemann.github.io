@@ -160,12 +160,11 @@ _.indexOf = function(array, value) {
     // iterate through array and return the index of the first occurance of value
     for (let i = 0; i < array.length; i++) {
         if (array[i] === value) {
-            return array[i];
+            return i;
         }
-        // if value is not in array, return -1
-        
     }
-
+  // if value is not in array, return -1
+  return -1;
 }
 
 /** _.contains
