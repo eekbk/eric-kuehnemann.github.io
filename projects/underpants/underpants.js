@@ -182,6 +182,17 @@ _.indexOf = function(array, value) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value) {
+    // iterate through array
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            // if array contains value return true
+            return true;
+        }
+    }
+    // return false otherwise
+    return false;
+}
 
 /** _.each
 * Arguments:
@@ -199,6 +210,21 @@ _.indexOf = function(array, value) {
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, action) {
+    // check if collection is an array
+    if (Array.isArray(collection)) {
+        // if so, iterate thru the array
+        for (let i = 0; i < collection.length; i++){
+        // call function for each iteration with the argument (element, index, collection)
+         action(collection[i], i, collection);
+        }
+    // otherwise, if it is an object, call the func once for each property with the args (prop value, key, collection)
+    } else if (typeof collection === 'object') {
+        for (let key in collection) {
+            action(collection[key], key, collection);
+        }
+    }
+}
 
 /** _.unique
 * Arguments:
