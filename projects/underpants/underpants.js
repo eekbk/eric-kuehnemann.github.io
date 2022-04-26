@@ -237,23 +237,19 @@ _.each = function(collection, action) {
 */
 
 _.unique = function(arr){
-    // create output array
-    let outputArr = [];
-    // iterate through inout array
-    for (let i = 0; i < arr.length; i++) {
-        // iterate thru output array
-        for (let j = 0; j < outputArr.length; j++) {
-            // if current index of output array matches current index of input, remove it from output array
-            if (arr[i] === outputArr[j]) {
-                outputArr.splice(j, 1,);
-            }
-        }
-        // add current index of input to output
-        outputArr.push(arr[i]);
-    }
-    // return output array
-    return outputArr;
-}
+   // create an output array
+   let output = [];
+   // loop throughthe input array, checking if the  pushing _.index on each element
+   for (let i = 0; i < arr.length; i++) {
+       // find the first Occurance of each element
+       let firstOccurance = _.indexOf(arr, arr[i]);
+       // if the output array doesnt already contain the first unique instance, push it
+       if (!_.contains(output, arr[firstOccurance])){
+           output.push(arr[firstOccurance]);
+       }   
+   }
+   return output;
+};
 
 
 /** _.filter
@@ -272,6 +268,22 @@ _.unique = function(arr){
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func) {
+    // create new output array
+    let newArr = [];
+    // go through each element in the array
+
+    for (let i = 0; i < array.length; i++) {
+        // check if function returns true on the element
+        if (func(array[i], i, array)) {
+            // if so, push it into newArr
+            newArr.push(array[i]);
+        }
+    }
+    // return new array
+    return newArr;
+};
+
 
 /** _.reject
 * Arguments:
@@ -286,6 +298,21 @@ _.unique = function(arr){
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function(array, func) {
+    // create output array
+    let newArr = [];
+    // iterate through input array
+    for (let i = 0; i < array.length; i++) {
+    // check if function returns false on element
+        if (!func(array[i], i, array)) {
+            // if so, push into new array
+            newArr.push(array[i]);
+        }
+    }
+
+    // return output array
+    return newArr;
+};
 
 /** _.partition
 * Arguments:
