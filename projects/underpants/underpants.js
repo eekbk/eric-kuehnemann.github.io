@@ -236,6 +236,25 @@ _.each = function(collection, action) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function(arr){
+    // create output array
+    let outputArr = [];
+    // iterate through inout array
+    for (let i = 0; i < arr.length; i++) {
+        // iterate thru output array
+        for (let j = 0; j < outputArr.length; j++) {
+            // if current index of output array matches current index of input, remove it from output array
+            if (arr[i] === outputArr[j]) {
+                outputArr.splice(j, 1,);
+            }
+        }
+        // add current index of input to output
+        outputArr.push(arr[i]);
+    }
+    // return output array
+    return outputArr;
+}
+
 
 /** _.filter
 * Arguments:
@@ -295,7 +314,7 @@ _.each = function(collection, action) {
 * Objectives:
 *   1) call <function> for each element in <collection> passing the arguments:
 *        if <collection> is an array:
-*            the element, it's index, <collection>
+*            the element, it's index, <collection> // pass in
 *        if <collection> is an object:
 *            the value, it's key, <collection>
 *   2) save the return value of each <function> call in a new array
@@ -303,6 +322,29 @@ _.each = function(collection, action) {
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+
+_.map = function(collection, func) {
+    // create output variable
+    let mapped = [];
+    // check if collection is an array
+    if (Array.isArray(collection)){
+        //iterate using for loop
+        for (let i = 0; i < collection.length; i++) {
+            let result = func(collection[i], i, collection);
+            mapped.push(result);
+        }
+     // else it's an object
+    } else {
+        for (let key in collection) {
+            let result = func(collection[key], key, collection);
+            mapped.push(result);
+        }
+
+    }
+    // return mapped
+    return mapped;
+
+}
 
 
 /** _.pluck
@@ -315,6 +357,16 @@ _.each = function(collection, action) {
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
+_.pluck = function(array, prop) {
+    // invoke map function on input array
+    let result = _.map(array, function(element){
+        // what should this function return
+        return element[prop];
+    });
+
+    return result;
+}
 
 
 /** _.every
@@ -338,7 +390,41 @@ _.each = function(collection, action) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
-
+_.every = function(collection, func) {
+    // determine if collection is an array
+    if (Array.isArray(collection)) {
+        // loop thru array, checking if the result of calling function on current item is false
+        for (let i = 0; i < collection.length; i++) {
+            if (func && !func(collection[i], i, collection)){
+                // if so, return false
+                return false;
+            // if no function is passed in, check if any value is falsey
+            } else {
+                if (!collection[i]) {
+                    //return false
+                    return false;
+                }
+            }
+        }
+    // else its an object
+    } else {
+    // loop thru object, checking if func exists and if the result of calling function on current item is false
+        for (let key in collection) {
+            if(func && !func(collection[key], key, collection)) {
+               // if so, return falsse
+               return false;
+            // otherwise check if any value is falsey and return false if so
+            } else {
+                if (!collection[key]) {
+                    return false;
+                }
+            }
+        }
+    }
+    // else return true
+    return true;
+};
+// determine if any value is false. if so, exit function, returning false
 /** _.some
 * Arguments:
 *   1) A collection
