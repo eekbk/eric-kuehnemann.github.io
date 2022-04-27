@@ -557,9 +557,29 @@ _.some = function(collection, func) {
 */
 
 _.reduce = function(array, func, seed) {
+    // ****ALEX'S WORKTHROUGH****
+    if (seed === undefined) {
+        seed = array[0];
+        // iterate through input array
+        for (let i = 1; i < array.length; i++) {
+            // reassign seed to the result of passing seed, the current value of the array, the current index and the collection
+            seed = func(seed, array[i], i, array);
+        }
+    } else {
+        // iterate through input array
+        for (let i = 0; i < array.length; i++){
+            seed = func(seed, array[i], i, array);
+        }
+    }
+    return seed;
+
+
+    /*
+    // ????could I simplify by making the prevResult the if clause
     // make a variable called prevResult
     let prevResult;
     // check if seed is defined. if not, iterate thru array starting at 1 index, using 0 index as seed
+    
     if (seed === undefined) {
         for (let i = 1; i < array.length; i++){
             // if it is the first iteration, use 0 index as seed
@@ -575,6 +595,7 @@ _.reduce = function(array, func, seed) {
             }
         }
     } else {
+        
         // loop thru array
         for (let i = 0; i < array.length; i++) {
             // if it is the first iteration, use seed as previous result and reassign prevreult to function call
@@ -589,7 +610,9 @@ _.reduce = function(array, func, seed) {
             }
         }
     }
+*/
 };
+
 
 /** _.extend
 * Arguments:
@@ -606,7 +629,12 @@ _.reduce = function(array, func, seed) {
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
+// can i do this with Object.assign? LOOK IT UP E
 _.extend = function(object1, object2, ...objects) {
+
+    // ???  Object.assign(object1, object2, ...objects); using "arguments" as args?
+    // ??? maybe I could use the spread operator
+
     // iterate thru arguments, starting at index 1
     for (let i = 1; i < arguments.length; i++) {
         // iterate thru current object
@@ -617,6 +645,7 @@ _.extend = function(object1, object2, ...objects) {
     }
     // return object1
     return object1;
+    
 }
 
 //////////////////////////////////////////////////////////////////////
