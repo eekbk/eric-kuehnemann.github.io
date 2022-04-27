@@ -96,8 +96,7 @@ _.first = function(array, number) {
     }
 // return result
 return result;
-
-}
+};
 
 /** _.last
 * Arguments:
@@ -165,7 +164,7 @@ _.indexOf = function(array, value) {
     }
   // if value is not in array, return -1
   return -1;
-}
+};
 
 /** _.contains
 * Arguments:
@@ -192,7 +191,7 @@ _.contains = function(array, value) {
     }
     // return false otherwise
     return false;
-}
+};
 
 /** _.each
 * Arguments:
@@ -272,7 +271,6 @@ _.filter = function(array, func) {
     // create new output array
     let newArr = [];
     // go through each element in the array
-
     for (let i = 0; i < array.length; i++) {
         // check if function returns true on the element
         if (func(array[i], i, array)) {
