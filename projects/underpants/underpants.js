@@ -333,6 +333,28 @@ _.reject = function(array, func) {
 }
 */
 
+_.partition = function(array, func) {
+    // create an output array
+    let output = [];
+    // create a truthy array
+    let truthyArr = [];
+    // create a falsey array
+    let falseyArr = [];
+    // iterate thru the input array 
+    for (let i = 0; i < array.length; i++) {
+        // if function call returns something truthy, push to truthy array
+        if (func(array[i], i, array)) {
+            truthyArr.push(array[i]);
+        // if function call returns something falsey, push to falsey array   
+        } else if (!func(array[i], i, array)) {
+            falseyArr.push(array[i]);
+        }
+    }
+    // push truthy array and falsey array to output array
+    output.push(truthyArr, falseyArr);
+    // return output array
+    return output;
+};
 
 /** _.map
 * Arguments:
@@ -451,7 +473,7 @@ _.every = function(collection, func) {
     // else return true
     return true;
 };
-// determine if any value is false. if so, exit function, returning false
+
 /** _.some
 * Arguments:
 *   1) A collection
@@ -473,6 +495,47 @@ _.every = function(collection, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func) {
+    // check if collection is an array
+    if (Array.isArray(collection)) {
+        // if so, iterate thru array, 
+        for (let i = 0; i  < collection.length; i++) {
+            // if function isnt provided or doesnt return boolean
+            if (!func || typeof func(collection[i], i, collection) !== 'boolean') {
+                // check if at least one element is truthy
+                if (collection[i]) {
+                    return true;
+                }
+            // else if boolean func exists, call function at every iteration 
+            } else {
+                // if return value is true for any element return true
+                if (func(collection[i], i, collection)){
+                    return true;
+                }
+            }
+        }
+    // else if collection is not an array
+    } else {
+        // iterate thru object,
+        for (let key in collection){
+            // if function isnt provided or doesnt return boolean
+            if (!func || typeof func(collection[key], key, collection) !== 'boolean'){
+                // check if at least one element is truthy
+                if (collection[key]) {
+                    return true;
+                 }
+            // else if boolean func exists, call function at every iteration
+            } else {
+                // if return value is true for any element return true
+                if (func(collection[key], key, collection)) {
+                    return true;
+                }
+            }
+        } 
+    }
+    // if false for all elements, return false
+    return false;
+}
 
 /** _.reduce
 * Arguments:
