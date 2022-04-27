@@ -556,6 +556,40 @@ _.some = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, func, seed) {
+    // make a variable called prevResult
+    let prevResult;
+    // check if seed is defined. if not, iterate thru array starting at 1 index, using 0 index as seed
+    if (seed === undefined) {
+        for (let i = 1; i < array.length; i++){
+            // if it is the first iteration, use 0 index as seed
+            if (i === 1) {
+                // reassign prevResult as current function call
+                prevResult = func(array[0], array[i], i);
+            //if it is the final iteration, return the final function call
+            } else if (i === array.length - 1) {
+                return func(prevResult, array[i], i);
+            // otherwise reassign prevresult to current function call
+            } else {
+                prevResult = func(prevResult, array[i], i);
+            }
+        }
+    } else {
+        // loop thru array
+        for (let i = 0; i < array.length; i++) {
+            // if it is the first iteration, use seed as previous result and reassign prevreult to function call
+            if (i === 0) {
+                prevResult = func(seed, array[i], i);
+            // if it is the final iteration, return the final function call
+            } else if (i === array.length - 1) {
+                return func(prevResult, array[i], i);
+            // otherwise iterate through the loop, reassigning prevresult as current func call
+            } else {
+                prevResult = func(prevResult, array[i], i);
+            }
+        }
+    }
+};
 
 /** _.extend
 * Arguments:
@@ -571,6 +605,19 @@ _.some = function(collection, func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(object1, object2, ...objects) {
+    // iterate thru arguments, starting at index 1
+    for (let i = 1; i < arguments.length; i++) {
+        // iterate thru current object
+        for (let key in arguments[i]) {
+            // copy current properties to object 1
+            object1[key] = arguments[i][key];
+        }
+    }
+    // return object1
+    return object1;
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
