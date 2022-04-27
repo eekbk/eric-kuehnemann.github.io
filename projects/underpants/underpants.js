@@ -642,9 +642,8 @@ _.extend = function(object1, object2, ...objects) {
         }
     }
     // return object1
-    return object1;
-    
-}
+    return object1;  
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
