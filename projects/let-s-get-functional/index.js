@@ -4,6 +4,7 @@
 
 var customers = require('./data/customers.json');
 var _ = require('underbar');
+const { join } = require('lodash');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -21,13 +22,44 @@ var _ = require('underbar');
  *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
  */
 
-var maleCount = function(array) {
+//MOST COMMON:
+// filter
+// map
+// reduce
+// each
 
+var maleCount = function(array) { 
+    let males = _.filter(array, function(element){
+        return element.gender === 'male';
+    });
+    return males.length;
+};
+// all of these variables will be functions!!
+var femaleCount = function(array) {
+    // invoke reduce function to accumulate number of female customers
+    let numFemales = _.reduce(array, function(accumulator, current, index, collection){
+        // determine if current object's gender is female
+        if (current.gender === 'female') {
+            // if true, add 1 to accumulator
+            accumulator += 1; 
+        }
+        // return accumulator
+        return accumulator;
+    }, 0);
+    return numFemales;
 };
 
-var femaleCount;
-
-var oldestCustomer;
+var oldestCustomer = function(array){
+    //invoke reduce function on input array
+    let oldest = _.reduce(array, function(accumulator, current, index, collection){
+        // determine if the current object's age property
+        if (current.age > accumulator.age){
+            accumulator = current;
+        }
+        return accumulator;
+    });
+    return oldest.name;
+};// could use reduce
 
 var youngestCustomer;
 
