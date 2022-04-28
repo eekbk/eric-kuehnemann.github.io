@@ -28,7 +28,9 @@ myName = 'bob';
 console.log(myName); // prints => bob
 
 // 4. var, let and const
-//  These are keywords used in declaring variables that each behave differently
+//  These are keywords used in declaring variables that each behave differently. let and const were introduced 
+//      in ES6 to address some of the limitations (or lack thereof) and problems with var.
+
 /* 
     var
     * reassignable: yes
@@ -50,4 +52,25 @@ console.log(myName); // prints => bob
     * scoped to functions: yes
     * scoped to if blocks: yes
     * scoped to loop blocks: yes
-    
+
+
+// 5. Hoisting. //
+* Hoisting is a process performed by the interpreter, where the declaration of
+*   variables and functions are "hoisted" to the top of their scope before the
+*   code is executed. This allows functions to be called before they are declared
+*   or defined. In the case of variables, though, since only the declaration is 
+*   hoisted, and not the initialization, use of the variable before it is assigned
+*   will result in undefined. */
+var myName = 'Eric';
+greeting(myName);
+
+function greeting(name){
+    console.log('Hello ' + name + '!')
+};
+// 'Hello Eric!' will be logged to the console
+
+greeting(yourName);
+var yourName = 'you old so and so';
+// 'Hello undefined!' will be logged to the console.
+
+  
