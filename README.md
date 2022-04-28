@@ -15,3 +15,9 @@
 7) in terminal => npm install -g opspark
 8) in terminal => os install
 
+## How to test LETS GET FUNCTIONAL
+1) cd into workspace
+
+2) copy and paste into workspace terminal => npm start --prefix ./eric-kuehnemann.github.io/projects/let-s-get-functional
+
+3) (cd back into eric-kuehnemann.github.io) to git push

@@ -8,8 +8,16 @@
 *
 *   0. Primitive data types
 *       Primitive data types are immutable, meaning that they cannot be changed (though
-*       the associated variable may be reassigned).
+*       the associated variable may be reassigned). Primitive data types are stored BY 
+*       COPY, meaning that if you store the same data to two different variables, a copy
+*       of the data is made  and reassigning one variable will not affect the other.*/
+        var num1 = 15;
+        var num2 = num1;
+        num1 = 30;
+        console.log(num2); // logs 15 to the console
+/** 
 *       Examples of Primitive data types:
+*
 *       A. String: A string is a collection of characters. The string is contained inside
 *           either single or double quotes (use either, just be consistent!). */
             var str = 'string';
@@ -43,5 +51,34 @@
             console.log(typeof myNull); // prints 'object'
 /**
 *   1. Complex Data Types
-*       A. Array: 
- */
+*       Complex data is mutable, meaning that you can alter the value of the data type, using
+*       methods. Unlike primitive data types, which are stored by copy, complex data types are 
+*       stored BY REFERENCE. This means that when you assign two variable to one object
+*       or array, they will be POINTING at the same data, and altering one variable will 
+*       affect the value of both. */
+        var array1 = [1, 2, 3];
+        var array1 = array2;
+        array2 = ['a', 'b', 'c'];
+        console.log(array1); // logs ['a', 'b', 'c']
+/**
+*       A. Array: An array is a collection of items, separated by commas. An array
+*           is contained inside square brackets, []. The array data type allows for 
+*           the storing of multiple items under one variable. The list is ordered, 
+*           meaning that items can be accessed by calling on their index number.
+*           Different data types can be stored in the same array. Note that 
+*           performing a typeof method on array will actually return 'object', 
+*           so it is better to use Array.isArray. */
+            var myArray = ['Hello', null, 1, false];
+            console.log(typeof myArray); // prints 'object'
+            console.log(Array.isArray(myArray)); // prints true.
+/**
+*       B. Object: An object is a collection of key, value pairs. These key value
+*           pairs are unordered, separated by commas and contained within curly brackets, {}. */
+            var myObject = {
+                name: 'Eric',
+                age: 42,
+                canVote: true
+            }
+/**
+*   2. Infinity and -Infinity
+*/
