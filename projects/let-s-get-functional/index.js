@@ -90,20 +90,91 @@ var averageBalance = function(array){
 
 var firstLetterCount = function(array, letter){
     // use filter to create a new array 
-    newArr = _.filter(array, function(element){
+    let newArr = _.filter(array, function(element){
         // return if current element's name starts with the input letter, case insensitive
-        return element.name[0].toUpperCase() === letter.toUpperCase();
+        let firstLetter = element.name[0];
+        return firstLetter.toUpperCase() === letter.toUpperCase();
     });
     return newArr.length;
 };
 
 
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter){
+    // let's get the customer's friends array into a new array
+    let friendArray = [];
+    // loop through input array locating element with matching name and reassigning friendArray to the friends list
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name === customer) {
+            friendArray = array[i].friends;
+        }
+    };
+    let matchArray = _.filter(friendArray, function(element){
+        return letter.toUpperCase() === element.name[0].toUpperCase();
+    });
 
-var friendsCount;
+    // //loop through the array to find the customer's name
+//_.each(array, functiom(element){
+    //     if (customer === element.name){
+    //         friendArray = element.friends;
+    //     };
+    // });
+      return matchArray.length;  
 
-var topThreeTags;
+};
+
+var friendsCount = function(array, name){
+    // create output array
+    let output = [];
+    // search thru input array
+    for (let i = 0; i < array.length; i++){
+        // search through friends array in current customer
+        for (let j = 0; j < array[i].friends.length; j++){
+            // find the friends lists that contain the target name
+            if (array[i].friends[j].name === name){
+                // push the current customer's name into the output array
+                output.push(array[i].name);
+            }
+        }
+    }
+    //return array
+    return output;
+};
+
+var topThreeTags = function(array){
+    // create an array of all the tags by operating on each element of the array
+    let allTags = [];
+    _.each(array, function(element){
+        // push each element of each tags array into allTags.
+        _.each(element.tags, function(tagsElement){
+            allTags.push(tagsElement);
+        });
+    });
+    // create an object to store key value pairs where the key is the tag string and the value is the occurance in allTags
+    let countedTags = {};
+    // go through each of the items in allTags
+    _.each(allTags, function(element){
+        // if the current element already exists as a key in countedTags, increment its value
+        if (countedTags[element]){
+            countedTags[element]++;
+        // otherwise, add the key value pair to countedTags, value 1
+        } else {
+            countedTags[element] = 1
+        };
+    });
+    // create 3  variables representing the most popular tags and 1 temporarily most popular
+    let mostPop;
+    let mostPop2;
+    let mostPop3;
+    let tempPop;
+    //iterate through countedTags checking if the current value is larger than the previous current value
+    _.each(countedTags, function(element, index, collection){
+        let tempPop['blahblah'] = 0
+        if (element > tempPop[index])
+    })
+
+    }
+};
 
 var genderCount;
 
