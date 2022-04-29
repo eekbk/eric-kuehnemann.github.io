@@ -557,6 +557,7 @@ _.some = function(collection, func) {
 _.reduce = function(array, func, seed) {
     // ****ALEX'S WORKTHROUGH****
     if (seed === undefined) {
+        // another word for seed is accumulator
         seed = array[0];
         // iterate through input array
         for (let i = 1; i < array.length; i++) {

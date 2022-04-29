@@ -61,11 +61,43 @@ var oldestCustomer = function(array){
     return oldest.name;
 };// could use reduce
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+    // use reduce to find the youngest customer
+    let youngest = _.reduce(array, function(accumulator, current, index, collection){
+        // determine if the current object's age is less than the accumulator
+        if (current.age < accumulator.age){
+            accumulator = current;
+        }
+        return accumulator;
+    });
+    return youngest.name;
+};
 
-var averageBalance;
 
-var firstLetterCount;
+var averageBalance = function(array){
+    // find the sum of all balances using reduce, setting the seed at 0
+    let sum = _.reduce(array, function(accumulator, current){
+        // convert current balnce to a number
+        let currentBal = Number(current.balance.replace('$', '').replace(',', '')); 
+        // add current balance to accumulator
+        accumulator += currentBal;
+        return accumulator;
+    }, 0);
+    // divide the sum 
+    let average = sum / array.length;
+    return average;
+};
+
+var firstLetterCount = function(array, letter){
+    // use filter to create a new array 
+    newArr = _.filter(array, function(element){
+        // return if current element's name starts with the input letter, case insensitive
+        return element.name[0].toUpperCase() === letter.toUpperCase();
+    });
+    return newArr.length;
+};
+
+
 
 var friendFirstLetterCount;
 
