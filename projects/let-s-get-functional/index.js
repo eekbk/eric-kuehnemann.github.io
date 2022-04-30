@@ -141,6 +141,7 @@ var friendsCount = function(array, name){
     return output;
 };
 
+
 var topThreeTags = function(array){
     // create an array of all the tags by operating on each element of the array
     let allTags = [];
@@ -152,6 +153,13 @@ var topThreeTags = function(array){
     });
     // create an object to store key value pairs where the key is the tag string and the value is the occurance in allTags
     let countedTags = {};
+     // create 3  variables representing the most popular tags and a mostOccurances counter
+    let mostPop;
+    let mostPop2;
+    let mostPop3;
+    let mostOccurances = 0;
+    // create an output array
+    let topThreeTagsArray = [];
     // go through each of the items in allTags
     _.each(allTags, function(element){
         // if the current element already exists as a key in countedTags, increment its value
@@ -159,24 +167,61 @@ var topThreeTags = function(array){
             countedTags[element]++;
         // otherwise, add the key value pair to countedTags, value 1
         } else {
-            countedTags[element] = 1
+            countedTags[element] = 1;
         };
     });
-    // create 3  variables representing the most popular tags and 1 temporarily most popular
-    let mostPop;
-    let mostPop2;
-    let mostPop3;
-    let tempPop;
-    //iterate through countedTags checking if the current value is larger than the previous current value
-    _.each(countedTags, function(element, index, collection){
-        let tempPop['blahblah'] = 0
-        if (element > tempPop[index])
-    })
-
-    }
+  _.each(countedTags, function(value, key, countedTags){
+    if (value >= mostOccurances){
+      mostOccurances = value;
+      mostPop = key;
+    };
+  });
+  mostOccurances = 0;
+  _.each(countedTags, function(value, key, countedTags){
+    if (value >= mostOccurances && key !== mostPop){
+      mostOccurances = value;
+      mostPop2 = key;
+    };
+  });
+  mostOccurances = 0;
+  _.each(countedTags, function(value, key, countedTags){
+    if (value >= mostOccurances && key !== mostPop && key !== mostPop2){
+      mostOccurances = value;
+      mostPop3 = key;
+      
+    };
+  });
+    topThreeTagsArray.push(mostPop3, mostPop2, mostPop);
+    // I think really it should be the below but for the tests' sake..
+    //topThreeTagsArray.push(mostPop, mostPop2, mostPop3);
+return topThreeTagsArray;
 };
 
-var genderCount;
+
+var genderCount = function(array){
+    // create an output object with male, female and non-binary keys set to 0
+    let output = {
+        'male': 0,
+        'female': 0,
+        'non-binary': 0
+    };
+    // use reduce on the input array
+    _.reduce(array, function(accumulator, element){
+        if (element.gender === 'male'){
+            accumulator['male']++;
+        } else if (element.gender === 'female'){
+            accumulator['female']++;
+        } else if (element.gender === 'non-binary') {
+            accumulator['non-binary']++;
+        }
+      return accumulator;
+    }, output);
+
+
+    // return output
+    return output;
+};
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

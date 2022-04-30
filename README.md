@@ -20,4 +20,4 @@
 
 2) copy and paste into workspace terminal => npm start --prefix ./eric-kuehnemann.github.io/projects/let-s-get-functional
 
-3) (cd back into eric-kuehnemann.github.io) to git push
+3) cd back into eric-kuehnemann.github.io to git push
