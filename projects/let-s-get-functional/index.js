@@ -170,7 +170,7 @@ var topThreeTags = function(array){
             countedTags[element] = 1;
         };
     });
-  _.each(countedTags, function(value, key, countedTags){
+  _.each(countedTags, function(value, key){
     if (value >= mostOccurances){
       mostOccurances = value;
       mostPop = key;
