@@ -57,9 +57,9 @@
 *       or array, they will be POINTING at the same data, and altering one variable will 
 *       affect the value of both. */
         var array1 = [1, 2, 3];
-        var array1 = array2;
-        array2 = ['a', 'b', 'c'];
-        console.log(array1); // logs ['a', 'b', 'c']
+        var array2 = array1;
+        array2.push('a', 'b', 'c');
+        console.log(array1); // logs [1, 2, 3, 'a', 'b', 'c']
 /**
 *       A. Array: An array is a collection of items, separated by commas. An array
 *           is contained inside square brackets, []. The array data type allows for 
@@ -81,4 +81,20 @@
             }
 /**
 *   2. Infinity and -Infinity
-*/
+*       A. Infinity is a property of the global object (a variable in the gloobal scope). It is a
+*       numerical value representing the concept of infinity. The value of Infinity is greater than 
+*       any other number. A number reaches Infinity when it exceeds the upper limit for a number: 
+*       1.797693134862315E+308. */ 
+        console.log(Infinity);                  // prints Infinity
+        console.log(Infinity + 1);              // prints Infinity
+        console.log(1 / Infinity);              // prints 0
+        console.log(1 / 0);                     // prints Infinity
+        let bigNum = 93472349723984723 * 43892574238571234805;
+        console.log(bigNum > Infinity);         // prints false
+/**
+*       B. -Infinity is the opposite of Infinity. It is less than any other number. A number reaches
+*       -Infinity when it exceeds the lower limit for a number: -1.797693134862316E+308. */
+        console.log(-Infinity);                 // prints -Infinity
+        let bigNegNum = -1234761237123876 * 485734765187442578;
+        console.log(bigNegNum < -Infinity);     // prints false
+
