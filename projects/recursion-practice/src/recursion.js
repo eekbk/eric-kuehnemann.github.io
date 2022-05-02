@@ -49,11 +49,29 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  // base
+  if (n === 0) {
+    return 0;
+  } else if (n < 0){
+    return (n + 1) + sumBelow(n + 1);
+  }
+  // recursion
+  return (n - 1) + sumBelow(n - 1);
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(x, y, output=[]) {
+  // base
+  if (x + 1 === y || x === y || x - 1 === y){
+    return output;
+  } else if (x > y) {
+    output.push(x - 1);
+    return range(x - 1, y, output);
+  }
+  // recursion
+  output.push(x + 1);
+  return range(x + 1, y, output);
 };
 
 // 7. Compute the exponent of a number.
@@ -62,6 +80,15 @@ var range = function(x, y) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  // base
+  if (exp === 0){
+    return 1;
+  } else if (exp < 0) {
+    return exponent(base, exp + 1) / base;
+
+  }
+  // recursion
+  return base * exponent(base, exp - 1);
 };
 
 // 8. Determine if a number is a power of two.
