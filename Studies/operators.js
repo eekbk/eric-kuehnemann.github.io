@@ -4,7 +4,7 @@
 *   operands (values and variables). Different types of operators have different
 *   purposes.
 *
-*   1. Assignment operators.
+*   0. Assignment operators.
 *       Assignment operators are used to assign values to variables. Some common 
 *       examples: */
 //          A. =    The equal assignment sets a variable equal to a value. 
@@ -22,7 +22,7 @@
 //          E. /=   The division assignment
                 a /= 2; // a = a / 2
 /**
-*   2. Arithmetic operators
+*   1. Arithmetic operators
 *       Arithmetic operators are used to perform arithmetic calculations. In addition 
 *       to +, -, * and / (addition, subtraction, multiplication and division,
 *       respectively), there are some other useful arithmetic operators.  */
@@ -39,7 +39,7 @@
 //          D. **   The exponent operator. 
                 a ** b; // a to the power of b
 /**
-*   3. Comparison operators
+*   2. Comparison operators
 *       Comparison operators compare to values and return a boolean value of true
 *       or false. */
 //          A. ==   Equal to: returns true if values are equal, even if of different
@@ -81,7 +81,7 @@
                 1 <= 2;             // returns true
                 1 <= 1;             // returns true
 /**
-*   4. Logical Operators
+*   3. Logical Operators
 *       Logical operators perform logical operations and return a boolean value, either 
 *       true or false.  */
 //          A. Logical AND: Returns true if BOTH operands are true. Otherwise returns false
@@ -97,7 +97,7 @@
                 !true               // returns false
                 !false              // returns true
 /**
-*   5. Unary Operators: A unary operator means that the operator requires only one operand,
+*   4. Unary Operators: A unary operator means that the operator requires only one operand,
 *       either before or after the operator. The BANG operator above is an example of a 
 *       unary operator. Some others include:
 *           A. delete: The delete operator will remove a property from an object. This 
@@ -129,7 +129,7 @@
                 let canVote = true;
                 console.log(+canVote);           // logs 1
 /**
-*   6. Ternary Operator
+*   5. Ternary Operator
 *           A. The ternary logical operator is the only javaScript operator that takes 3 operands: 
 *               a condition followed by a question mark (?), then an expression to execute if the 
 *               condition is truthy followed by a colon (:), and finally the expression to execute 
@@ -137,4 +137,4 @@
 *               if...else statement. */
                 let custAge = 31;
                 let beverage = (custAge >= 21) ? beer : sunnyD; // beer
-                
+
