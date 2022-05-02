@@ -5,7 +5,21 @@
 var customers = require('./data/customers.json');
 var _ = require('underbar');
 const { join } = require('lodash');
-
+var myEach = function(collection, action) {
+    // check if collection is an array
+    if (Array.isArray(collection)) {
+        // if so, iterate thru the array
+        for (let i = 0; i < collection.length; i++){
+        // call function for each iteration with the argument (element, index, collection)
+         action(collection[i], i, collection);
+        }
+    // otherwise, if it is an object, call the func once for each property with the args (prop value, key, collection)
+    } else if (typeof collection === 'object') {
+        for (let key in collection) {
+            action(collection[key], key, collection);
+        }
+    }
+}
 /**
  * 1. Import your lodown module using the require() method,
  *    using the string 'lodown-<my-username>', or whatever
@@ -161,7 +175,7 @@ var topThreeTags = function(array){
     // create an output array
     let topThreeTagsArray = [];
     // go through each of the items in allTags
-    _.each(allTags, function(element){
+    myEach(allTags, function(element){
         // if the current element already exists as a key in countedTags, increment its value
         if (countedTags[element]){
             countedTags[element]++;
@@ -170,21 +184,21 @@ var topThreeTags = function(array){
             countedTags[element] = 1;
         };
     });
-  _.each(countedTags, function(value, key){
+ myEach(countedTags, function(value, key){
     if (value >= mostOccurances){
       mostOccurances = value;
       mostPop = key;
     };
   });
   mostOccurances = 0;
-  _.each(countedTags, function(value, key, countedTags){
+ myEach(countedTags, function(value, key, countedTags){
     if (value >= mostOccurances && key !== mostPop){
       mostOccurances = value;
       mostPop2 = key;
     };
   });
   mostOccurances = 0;
-  _.each(countedTags, function(value, key, countedTags){
+ myEach(countedTags, function(value, key, countedTags){
     if (value >= mostOccurances && key !== mostPop && key !== mostPop2){
       mostOccurances = value;
       mostPop3 = key;
