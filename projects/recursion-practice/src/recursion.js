@@ -150,9 +150,25 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function(x, y) {
+var multiply = function(x, y, sum = x) {
+
+  if (y === 1 || y === -1) {
+    return sum;
+  } else if (x === 0 || y === 0){
+    return 0;
+  } else if (y < 0 && x > 0){
+    sum += x;
+    return multiply(x, y + 1, sum);
+  } else if (y < 0 && x < 0){
+    x = -x;
+    y = -y;
+    return multiply(x, y);
+  }
+  sum += x;
+  return multiply(x, y - 1, sum);
 };
 
+  
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
