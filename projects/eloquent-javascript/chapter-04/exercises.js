@@ -4,7 +4,26 @@
 
 function range(start, end, step) {
   // if step has not been passed in
-
+  let output = []
+  if (!step && start <= end){
+    for (i = start; i <= end; i++){
+      output.push(i);
+    }
+  } else if (!step && start >= end){
+    for (i = start; i >= end; i--){
+      output.push(i);
+    }
+  } else if (step <= 0){
+    return output;
+  } else if (step && start <= end){
+    for (i = start; i <= end; i += step){
+      output.push(i);
+    }
+  } else if (step && start >= end) {
+    for (i = start; i >= end; i -= step)
+      output.push(i);
+  }
+  return output;
   // else step has been passed in
 }
 
@@ -15,7 +34,14 @@ console.log(range(1, 4, 2)); // => [1, 3]
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
+function sum(array, output = 0) {
+  // base
+  if (array.length === 0){
+    return output; 
+  }
+  // recursion
+  output += array[0];
+  return sum(array.slice(1), output);
 
 }
 
