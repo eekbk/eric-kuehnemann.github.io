@@ -67,7 +67,13 @@ function reverseArray(array) { // non-descructive (returns brand new array)
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArrayInPlace(array) { // DESTRUCTIVE (returns orig array, changed)
-
+  // loop over half of the array
+  for (i = 0; i < Math.floor(array.length / 2); i++){
+    let current = array[i];
+    array[i] = array[array.length - 1 - i];
+    array.push(current);
+  }
+  return array;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
