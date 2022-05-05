@@ -5,7 +5,9 @@
 function range(start, end, step) {
   // if step has not been passed in
   let output = []
-  if (!step && start <= end){
+  if (start === end){
+    return output;
+  } else if (!step && start <= end){
     for (i = start; i <= end; i++){
       output.push(i);
     }
@@ -49,15 +51,22 @@ function sum(array, output = 0) {
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() { // non-descructive (returns brand new array)
-
+function reverseArray(array) { // non-descructive (returns brand new array)
+  // initialize an empty array as the output
+  let output = [];
+  // iterate backwards over the array, pushing each value into the input array
+  for (let i = array.length - 1; i >= 0; i--){
+    output.push(array[i]);
+  }
+  // return the output
+  return output;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() { // DESTRUCTIVE (returns orig array, changed)
+function reverseArrayInPlace(array) { // DESTRUCTIVE (returns orig array, changed)
 
 }
 
@@ -97,8 +106,33 @@ function nth() {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() { // determine if two objects are identical
+function deepEqual(x, y){
+  // determine if both values are not objects
+  if (typeof x !== 'object' && typeof y !== 'object'){
+    return x === y;
+  }
 
+  // determine if either of the values is not an object
+  if (typeof x !== 'object' || typeof y !== 'object'){
+    return false;
+  }
+
+  // create arrays of each inputs keys
+  let xKeys = Object.keys(x);
+  let yKeys = Object.keys(y);
+
+  // determine if the length of the arrays are equal
+  if (xKeys.length !== yKeys.length){
+    return false;
+  }
+
+  for (let i = 0; i < xKeys.length; i++){
+    if (!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[yKeys[i]])){
+      return false;
+    }
+      
+  }
+  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
