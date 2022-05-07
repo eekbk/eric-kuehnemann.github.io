@@ -83,7 +83,15 @@ function reverseArrayInPlace(array) { // DESTRUCTIVE (returns orig array, change
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function arrayToList() {
+function arrayToList(array) {
+  // create an output object
+  let obj = {};
+  // iterate backwards thru the array
+  for (let i = array.length - 1; i >= 0; i--){
+    // at each iteration add the current index to value of the key value, 
+    // add a key called rest that is the previous obj
+    let objI = obj;
+  }
 
 }
 
