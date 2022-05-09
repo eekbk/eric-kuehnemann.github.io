@@ -83,25 +83,34 @@ function reverseArrayInPlace(array) { // DESTRUCTIVE (returns orig array, change
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function arrayToList(array) {
-  // create an output object
-  let obj = {};
-  // iterate backwards thru the array
+function arrayToList(array){
+  // create rest value
+  let rest = null;
+  // iterate backwards
   for (let i = array.length - 1; i >= 0; i--){
-    // at each iteration add the current index to value of the key value, 
-    // add a key called rest that is the previous obj
-    let objI = obj;
+    // reassign the v object with a key of "value" set to the current item in the array and a key of rest set to the current value of rest
+    rest = { value: array[i], rest: rest };
   }
-
+  return rest;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
-
+function listToArray(list, arr = []){
+  // base
+  if (list.rest === null){
+    arr.push(list.value);
+    return arr;
+  }
+  // recursion
+    // accessing the current value property and adding it to arr
+  arr.push(list.value); // 10
+  // using list.rest will alter the input so that you are invoking just the next innermost object
+  return listToArray(list.rest, arr);
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
@@ -116,6 +125,10 @@ function prepend() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function nth() {
+  //USE RECURSION
+  // base
+
+  // recursion
 
 }
 
