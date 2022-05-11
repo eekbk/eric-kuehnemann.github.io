@@ -35,4 +35,29 @@
         // 2
         // 3
         // 4
-        // 5
+
+        // You can also iterate BACKWARDS over an array
+        let newArray = [1, 2, 3, 4];
+        for (let i = newArray.length - 1; i >= 0; i--){
+            console.log(myArray[i]);
+        }
+        // prints
+        // 4
+        // 3
+        // 2
+        // 1
+/**
+ *  2. FOR IN LOOPS are used for looping over an object. Because objects are unordered,
+ *      the iteration happens in an arbitrary order, so it is best not to add or remove keys
+ *      during a for loop because you cannot tell if the iteration will affect the key or not.
+ */     let personObj = {
+                name: 'Eric',
+                age: 42,
+                canHazCheezburger: true
+             };
+        for (let key in personObj){
+            console.log(`My ${key} is ${personObj[key]}.`);
+        };
+        // prints:  "My name is Eric."
+        //          "My age is 42."
+        //          "My canHazCheezburger is true."
