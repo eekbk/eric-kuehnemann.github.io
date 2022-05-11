@@ -1,6 +1,19 @@
+function characterScript(code) {
+  for (let script of SCRIPTS) {
+    if (script.ranges.some(([from, to]) => {
+        return code >= from && code < to;
+      })) {
+      return script;
+    }
+  }
+  return null;
+}
+
 // /////////////////////////////////////////////////////////////////////////////
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
+
+// const { characterScript } = require("./helpers");
 
 function flatten(arrays) {
   return arrays.reduce(function(accumulator, current){
@@ -35,12 +48,33 @@ function every(array, predFunc) {
   return true;
 }
 
-// /////////////////////////////////////////////////////////////////////////////
-// dominantDirection ///////////////////////////////////////////////////////////
-// /////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+dominantDirection ///////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-  // Alex is gonna go over this in class
+function dominantDirection(string) { // 'Hello'
+  // replace spaces with empty strings
+  let newStr = string.replace(/\s/g, ''); // 'hello world' => 'helloworld'
+  // create two arrays to store the number of writing directions
+  let ltr = [];
+  let rtl = [];
+  // iterate thru newStr
+  for (let i = 0; i < newStr.length; i++){
+    let scriptName = characterScript(newStr.charCodeAt(i));
+    // determine if scriptName is NOT null
+    if (scriptName !== null) {
+      if (scriptName.direction === 'ltr'){
+        ltr.push(scriptName);
+      } else {
+        rtl.push(scriptName);
+      }
+    }
+  }
+  if (ltr.length > rtl.length){
+    return 'ltr';
+  } else {
+    return 'rtl';
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
