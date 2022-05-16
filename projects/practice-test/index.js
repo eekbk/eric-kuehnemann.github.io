@@ -113,9 +113,9 @@ var dogContestants = [ ...filterSpecies ];
 
 // 5. 
 var dogsWithClasses = dogContestants.map(function(dog){
-    if (dog.weight >= 0 && dog.weight <= 10){
+    if (dog.weight <= 10){
         dog.class = 'red';
-    } else if (dog.weight >= 11 && dog.weight <= 20) {
+    } else if (dog.weight <= 20) {
         dog.class = 'yellow';
     } else {
         dog.class = 'green';

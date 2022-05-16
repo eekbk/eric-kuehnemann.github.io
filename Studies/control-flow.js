@@ -5,7 +5,7 @@
 * CONTROL FLOW is how your computer runs code and in which order. JavaScript reads code from top to
 *   bottom, unless it hits any code that alters the control flow, such as conditional statements.
 *   0. If-Else if-Else statements: The if-else if statement if a syntax for writing conditional
-*       statements that will create a control flow for your program
+*       statements that will create a control flow for your program.
 *       A.The if statement contains a block of code that will run IF the statement is true. */
         if(1 < 10){
             console.log('This is TOTALLY true!');
@@ -13,7 +13,9 @@
 /**
 *       B. Else if: The else if statement follows the if code block. If the initial if statement
 *           is false, that code will be skipped and the else-if statement will be evaluated for 
-*           for truthiness.*/
+*           for truthiness. It is important to include the word else, rather than just a bunch 
+*           of if statements. (A chain of if statements would all run if their conditions were all
+*           true. */
         if(1 > 10){
             console.log('This is TOTALLY true!');
         } else if (1 < 10) {

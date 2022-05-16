@@ -56,11 +56,13 @@ console.log(myName); // prints => bob
 
 // 5. Hoisting. //
 * Hoisting is a process performed by the interpreter, where the declaration of
-*   variables and functions are "hoisted" to the top of their scope before the
-*   code is executed. This allows functions to be called before they are declared
-*   or defined. In the case of variables, though, since only the declaration is 
-*   hoisted, and not the initialization, use of the variable before it is assigned
-*   will result in undefined. */
+*   variables declared with the var keyword as well as function definittions are 
+*   "hoisted" to the top of their scope before the code is executed. This allows 
+*   functions to be called before they are declared or defined. In the case of 
+*   variables, though, since only the declaration is hoisted, and not the 
+*   initialization, use of the variable before it is assigned will result in 
+*   undefined. Variables declared with the let and const keywords are not hoisted,
+*   however. Calling them will result in a reference error.*/
 var myName = 'Eric';
 greeting(myName);
 
@@ -72,5 +74,9 @@ function greeting(name){
 greeting(yourName);
 var yourName = 'you old so and so';
 // 'Hello undefined!' will be logged to the console.
+
+console.log(friends);
+let friends = true;
+// results in a reference error
 
   

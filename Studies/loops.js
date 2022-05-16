@@ -23,8 +23,9 @@
 /**
  *  1. FOR LOOPS are very useful when you know how long you would like to iterate for. A common use
  *      of for loops is to iterate through an array. The for loop has three statements. The first 
- *      statement represents where you would like the loops to start. The secong represents when
- *      you would like the loop to stop. The third statement is how the variable should change after
+ *      statement represents where you would like the loops to start. The second represents when
+ *      you would like the loop to stop. The loop will continue as long as the second statement is true.
+ *      Once false, the loop will end. The third statement is how the variable should change after
  *      each iteration. Be careful, though, not to start an infinite loop. */
         let myArray = [1, 2, 3, 4];
         for (let i = 0; i < myArray.length; i++){
